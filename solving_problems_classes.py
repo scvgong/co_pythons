@@ -3,8 +3,8 @@ class Question_Answer:
     #함수가 인스턴스 메소드라면 첫 인자를 'self'로 줘야 대상이 되는 인스턴스가 정확히 무엇인지 확인
     #__init__()은 반드시 첫 번째 인수로 self를 지정
     def __init__(self, problems, correct_answers):
-        problems = problems    # hint
-        self.correct_answers = self.correct_answers     # hint
+        self.problems = problems    # hint problems -> self.problems
+        self.correct_answers = correct_answers     # hint self.correct_answers -> correct_answers
         
     def problems_main(self):
         problems_first = self.problems[1], self.problems[3], self.problems[5], self.problems[7]
@@ -12,7 +12,7 @@ class Question_Answer:
 
         list_results = []
         
-        for question in range(1):    # hint
+        for question in range(len(problems_first)):    # hint range(1) -> range(len(problems_first))
             question_a = problems_second[question]
             question_b = problems_first[question]
 
@@ -36,16 +36,16 @@ class Statistics:
         input_temp = [int(i) for i in input_temp]
         # 문제 당 점수
         score_temp = [10, 15, 10, 5]        # hint
-        score = 0               # hint
-
+        self.score = 0               # hint socre -> self.score
+ 
         # 점수 합계
         for i in range(len(input_temp)):
             if list_corrects[i] == input_temp[i]:
-                score += score_temp[i]
+                self.score += score_temp[i]
 
         print("—----- 결과 —-------------")
         print("응답한 내용 : 1번 {}, 2번 {}, 3번 {}, 4번 {}".format(input_temp[0], input_temp[1], input_temp[2], input_temp[3]))
-        print("당신 응답 합계 : {}점".format(score))
+        print("당신 응답 합계 : {}점".format(self.score))
 
         self.credit_result()
 
@@ -77,7 +77,7 @@ if __name__ == "__main__":
     list_corrects = [2, 1, 1, 2]
 
 
-    question_answer = Question_Answer(list_problems)    # hint
+    question_answer = Question_Answer(list_problems,list_corrects)    # hint Question_Answer(list_problems))의 correct_answer에 대한 인자값 추가 
     result = question_answer.problems_main()
 
     statistics = Statistics()
